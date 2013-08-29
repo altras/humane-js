@@ -209,7 +209,6 @@
          else if (cb) cb()
       },
       log: function (html, o, cb, defaults) {
-         debugger;
          var msg = {}
          if (defaults)
            for (var opt in defaults)
