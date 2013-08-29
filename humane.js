@@ -110,8 +110,16 @@
             this.currentTimer = setTimeout(ENV.bind(this._afterTimeout,this), timeout)
 
          if (ENV.isArray(msg.html)) msg.html = '<ul><li>'+msg.html.join('<li>')+'</ul>'
+         
+         var DOM_img = null;
+         
+         if (msg.image) {
+            DOM_img = document.createElement("img");
+            DOM_img.src = msg.image;
+         }
 
          this.el.innerHTML = msg.html
+         if (DOM_img.src) this.el.appendChild(DOM_img);
          this.currentMsg = msg
          this.el.className = this.baseCls
          if (ENV.transSupport) {
@@ -201,6 +209,7 @@
          else if (cb) cb()
       },
       log: function (html, o, cb, defaults) {
+         debugger;
          var msg = {}
          if (defaults)
            for (var opt in defaults)
